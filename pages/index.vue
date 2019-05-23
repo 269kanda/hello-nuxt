@@ -1,10 +1,21 @@
 <template>
   <section class="container">
+    <h1 class="title">
+      hello-nuxt
+    </h1>
+    
     <div>
       <app-logo/>
-      <h1 class="title">
-        hello-nuxt
-      </h1>
+    </div>
+    
+    <div>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    sample
+    </div>
+    
+    <!--
+    <div>
+      <app-logo/>
       <h2 class="subtitle">
         Nuxt.js project
       </h2>
@@ -19,6 +30,7 @@
           class="button--grey">GitHub</a>
       </div>
     </div>
+    -->
   </section>
 </template>
 
@@ -33,6 +45,7 @@ export default {
 </script>
 
 <style>
+
 .container {
   min-height: 100vh;
   display: flex;
