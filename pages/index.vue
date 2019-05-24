@@ -1,16 +1,32 @@
 <template>
   <section class="container">
-    <h1 class="title">
-      hello-nuxt
-    </h1>
-    
-    <div>
-      <app-logo/>
+  
+    <div class="c_box">
+      test1
     </div>
-    
-    <div>
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
-    sample
+    <div class="c_box">
+      test2
+    </div>
+    <div class="c_box">
+      test3
+    </div>
+    <div class="c_box">
+      test4
+    </div>
+    <div class="c_box">
+      test5
+    </div>
+    <div class="c_box">
+      test6
+    </div>
+    <div class="c_box">
+      test7
+    </div>
+    <div class="c_box">
+      test8
+    </div>
+    <div class="c_box">
+      test9
     </div>
     
     <!--
@@ -48,10 +64,24 @@ export default {
 
 .container {
   min-height: 100vh;
+  /*
   display: flex;
+  flex-wrap:wrap;
+  
   justify-content: center;
   align-items: center;
-  text-align: center;
+  
+  z-index: 2;
+  */
+}
+
+.c_box{
+  height: 15vh;
+  width: 65vh;
+  
+  padding: 1vh;
+  margin: 1vh;
+  background-color: #f8f8f8;
 }
 
 .title {
