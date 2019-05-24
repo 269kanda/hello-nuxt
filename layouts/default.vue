@@ -1,6 +1,7 @@
 <template>
   <div>
     <AppHeader></AppHeader>
+    <div class="header-botom"></div>
     <nuxt/>
   </div>
 </template>
@@ -61,5 +62,10 @@ html {
   color: #fff;
   background-color: #35495e;
 }
+
+.header-botom {
+  padding-bottom: 8vh;
+}
+
 </style>
 
