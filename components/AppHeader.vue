@@ -1,6 +1,6 @@
 <template>
     <div class="navbar">
-        header
+        社内で本の貸し借りとかできたら嬉しい
     </div>
     
 </template>

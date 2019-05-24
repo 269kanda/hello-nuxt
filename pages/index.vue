@@ -1,96 +1,99 @@
 <template>
   <section class="container">
-  
-    <div class="c_box">
-      <div class="c_box-title">
-        title
+    <div>
+      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          <br>
+          借りるボタン、いいねボタン的なもの？
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
       </div>
-      <div class="c_box-link-box">
-        link的な
+      
+      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          <br>
+          借りるボタン、いいねボタン的なもの？
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
       </div>
-      <div class="c_box-main">
-        main
+      
+      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          <br>
+          借りるボタン、いいねボタン的なもの？
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
       </div>
-      <div class="c_box_futter">
-        futter 
+
+      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          <br>
+          借りるボタン、いいねボタン的なもの？
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
       </div>
+
+      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          <br>
+          借りるボタン、いいねボタン的なもの？
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
+      </div>
+      
     </div>
     
-    <div class="c_box">
-      <div class="c_box-title">
-        title
-      </div>
-      <div class="c_box-link-box">
-        link的な
-      </div>
-      <div class="c_box-main">
-        main
-      </div>
-      <div class="c_box_futter">
-        futter 
-      </div>
+    <div class="links">
+      <a
+        href="https://github.com/kandaYusuke/hello-nuxt/tree/master"
+        target="_blank"
+        class="button--green">GitHub</a>
     </div>
-
-    <div class="c_box">
-      <div class="c_box-title">
-        title
-      </div>
-      <div class="c_box-link-box">
-        link的な
-      </div>
-      <div class="c_box-main">
-        main
-      </div>
-      <div class="c_box_futter">
-        futter 
-      </div>
-    </div>
-
-    <div class="c_box">
-      <div class="c_box-title">
-        title
-      </div>
-      <div class="c_box-link-box">
-        link的な
-      </div>
-      <div class="c_box-main">
-        main
-      </div>
-      <div class="c_box_futter">
-        futter 
-      </div>
-    </div>
-
-    <div class="c_box">
-      <div class="c_box-title">
-        title
-      </div>
-      <div class="c_box-link-box">
-        link的な
-      </div>
-      <div class="c_box-main">
-        main
-      </div>
-      <div class="c_box_futter">
-        futter 
-      </div>
-    </div>
-
-    <div class="c_box">
-      <div class="c_box-title">
-        title
-      </div>
-      <div class="c_box-link-box">
-        link的な
-      </div>
-      <div class="c_box-main">
-        main
-      </div>
-      <div class="c_box_futter">
-        futter 
-      </div>
-    </div>
-    
     <!--
     <div>
       <app-logo/>
@@ -109,6 +112,7 @@
       </div>
     </div>
     -->
+    
   </section>
 </template>
 
@@ -142,7 +146,7 @@ export default {
   flex-wrap: wrap;
   
   height: 25vh;
-  width: 80vh;
+  width: 90vh;
   
   padding: 0.2vh;
   margin: 1vh;
