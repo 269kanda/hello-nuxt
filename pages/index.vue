@@ -2,31 +2,93 @@
   <section class="container">
   
     <div class="c_box">
-      test1
+      <div class="c_box-title">
+        title
+      </div>
+      <div class="c_box-link-box">
+        link的な
+      </div>
+      <div class="c_box-main">
+        main
+      </div>
+      <div class="c_box_futter">
+        futter 
+      </div>
     </div>
+    
     <div class="c_box">
-      test2
+      <div class="c_box-title">
+        title
+      </div>
+      <div class="c_box-link-box">
+        link的な
+      </div>
+      <div class="c_box-main">
+        main
+      </div>
+      <div class="c_box_futter">
+        futter 
+      </div>
     </div>
+
     <div class="c_box">
-      test3
+      <div class="c_box-title">
+        title
+      </div>
+      <div class="c_box-link-box">
+        link的な
+      </div>
+      <div class="c_box-main">
+        main
+      </div>
+      <div class="c_box_futter">
+        futter 
+      </div>
     </div>
+
     <div class="c_box">
-      test4
+      <div class="c_box-title">
+        title
+      </div>
+      <div class="c_box-link-box">
+        link的な
+      </div>
+      <div class="c_box-main">
+        main
+      </div>
+      <div class="c_box_futter">
+        futter 
+      </div>
     </div>
+
     <div class="c_box">
-      test5
+      <div class="c_box-title">
+        title
+      </div>
+      <div class="c_box-link-box">
+        link的な
+      </div>
+      <div class="c_box-main">
+        main
+      </div>
+      <div class="c_box_futter">
+        futter 
+      </div>
     </div>
+
     <div class="c_box">
-      test6
-    </div>
-    <div class="c_box">
-      test7
-    </div>
-    <div class="c_box">
-      test8
-    </div>
-    <div class="c_box">
-      test9
+      <div class="c_box-title">
+        title
+      </div>
+      <div class="c_box-link-box">
+        link的な
+      </div>
+      <div class="c_box-main">
+        main
+      </div>
+      <div class="c_box_futter">
+        futter 
+      </div>
     </div>
     
     <!--
@@ -64,10 +126,10 @@ export default {
 
 .container {
   min-height: 100vh;
-  /*
+
   display: flex;
   flex-wrap:wrap;
-  
+  /*
   justify-content: center;
   align-items: center;
   
@@ -76,12 +138,44 @@ export default {
 }
 
 .c_box{
-  height: 15vh;
-  width: 65vh;
+  display: flex;
+  flex-wrap: wrap;
   
-  padding: 1vh;
+  height: 25vh;
+  width: 80vh;
+  
+  padding: 0.2vh;
   margin: 1vh;
-  background-color: #f8f8f8;
+  background-color: #fff;
+  
+  border-radius: 4px;
+  border: 0.1px solid #f5f5ff;
+}
+
+.c_box-title {
+  width:100%;
+  height: 20%;
+  background-color: #f8ffff;
+}
+
+.c_box-link-box {
+  width: 40%;
+  height: 65%;
+  border: 0.1px solid #f5f5ff;
+}
+
+.c_box-main {
+  width: 60%;
+  height: 65%;
+  border: 0.1px solid #f5f5ff;
+}
+
+.c_box_futter {
+  width:100%;
+  height: 15%;
+ 
+  border: 0.1px solid #f8ffff;
+  background-color: #f8ffff;
 }
 
 .title {
