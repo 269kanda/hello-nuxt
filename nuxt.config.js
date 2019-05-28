@@ -34,6 +34,9 @@ module.exports = {
         })
       }
     }
-  }
+  },
+  plugins: [
+    '~plugins/scroll.js'
+  ]
 }
 

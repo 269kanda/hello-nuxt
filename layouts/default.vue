@@ -3,16 +3,18 @@
     <AppHeader></AppHeader>
     <div class="header-botom"></div>
     <nuxt/>
+    <AppButtonToppage></AppButtonToppage>
   </div>
 </template>
 
 <script>
   import AppHeader from '@/components/AppHeader.vue';
-  
+  import AppButtonToppage from '@/components/AppButtonToppage.vue';
   
   export default {
       components: {
           AppHeader,
+          AppButtonToppage
       },
   };
 </script>

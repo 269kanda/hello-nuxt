@@ -1,7 +1,6 @@
 <template>
   <section class="container">
     
-    本の情報をISBNを元にGoogleあたりから引っ張れたらうれしい
     <div>
     
       <div class="c_box">
@@ -14,7 +13,8 @@
         </div>
         <div class="c_box-link-box">
           発売日：<br>
-          著者：
+          著者：<br>
+          本の情報をISBNを元にGoogleあたりから引っ張れたらうれしい
         </div>
         <div class="c_box_futter">
           futter、なにかしらのバッチアイコンと情報?
@@ -34,7 +34,8 @@
         </div>
         <div class="c_box-link-box">
           発売日：<br>
-          著者：
+          著者：<br>
+          本の情報をISBNを元にGoogleあたりから引っ張れたらうれしい
         </div>
         <div class="c_box_futter">
           futter、なにかしらのバッチアイコンと情報?
@@ -51,7 +52,42 @@
         </div>
         <div class="c_box-link-box">
           発売日：<br>
-          著者：
+          著者：<br>
+          本の情報をISBNを元にGoogleあたりから引っ張れたらうれしい
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
+        <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
+      </div>      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          発売日：<br>
+          著者：<br>
+          本の情報をISBNを元にGoogleあたりから引っ張れたらうれしい
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
+        <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
+      </div>      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          発売日：<br>
+          著者：<br>
+          本の情報をISBNを元にGoogleあたりから引っ張れたらうれしい
         </div>
         <div class="c_box_futter">
           futter、なにかしらのバッチアイコンと情報?
