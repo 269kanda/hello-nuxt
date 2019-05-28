@@ -37,6 +37,11 @@ module.exports = {
   },
   plugins: [
     '~plugins/scroll.js'
-  ]
+  ],
+  modules: [
+    '@nuxtjs/axios'
+  ],
+  axios: {
+  }
 }
 
