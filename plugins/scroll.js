@@ -1,5 +1,5 @@
 import Vue from 'vue'
-//
+
 Vue.directive('scroll', {
     inserted: function (el, binding) {
         let f = function (evt) {
