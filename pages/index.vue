@@ -1,6 +1,9 @@
 <template>
   <section class="container">
+    
+    本の情報をISBNを元にGoogleあたりから引っ張れたらうれしい
     <div>
+    
       <div class="c_box">
         <div class="c_box-title">
           本のタイトルとか
@@ -10,47 +13,16 @@
           推薦人とコメント的なもの？
         </div>
         <div class="c_box-link-box">
-          <br>
-          借りるボタン、いいねボタン的なもの？
+          発売日：<br>
+          著者：
         </div>
         <div class="c_box_futter">
           futter、なにかしらのバッチアイコンと情報?
         </div>
+        <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
       </div>
-      
-      <div class="c_box">
-        <div class="c_box-title">
-          本のタイトルとか
-        </div>
-        <div class="c_box-main">
-          main
-          推薦人とコメント的なもの？
-        </div>
-        <div class="c_box-link-box">
-          <br>
-          借りるボタン、いいねボタン的なもの？
-        </div>
-        <div class="c_box_futter">
-          futter、なにかしらのバッチアイコンと情報?
-        </div>
-      </div>
-      
-      <div class="c_box">
-        <div class="c_box-title">
-          本のタイトルとか
-        </div>
-        <div class="c_box-main">
-          main
-          推薦人とコメント的なもの？
-        </div>
-        <div class="c_box-link-box">
-          <br>
-          借りるボタン、いいねボタン的なもの？
-        </div>
-        <div class="c_box_futter">
-          futter、なにかしらのバッチアイコンと情報?
-        </div>
-      </div>
+
+      <!--↓仮配置のコピペゾーン↓-->
 
       <div class="c_box">
         <div class="c_box-title">
@@ -61,14 +33,14 @@
           推薦人とコメント的なもの？
         </div>
         <div class="c_box-link-box">
-          <br>
-          借りるボタン、いいねボタン的なもの？
+          発売日：<br>
+          著者：
         </div>
         <div class="c_box_futter">
           futter、なにかしらのバッチアイコンと情報?
         </div>
+        <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
       </div>
-
       <div class="c_box">
         <div class="c_box-title">
           本のタイトルとか
@@ -78,13 +50,16 @@
           推薦人とコメント的なもの？
         </div>
         <div class="c_box-link-box">
-          <br>
-          借りるボタン、いいねボタン的なもの？
+          発売日：<br>
+          著者：
         </div>
         <div class="c_box_futter">
           futter、なにかしらのバッチアイコンと情報?
         </div>
+        <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
       </div>
+      
+      <!--↑仮配置のコピペゾーン↑-->
       
     </div>
     
@@ -154,6 +129,8 @@ export default {
   
   border-radius: 4px;
   border: 0.1px solid #f5f5ff;
+  
+  z-index: 2;
 }
 
 .c_box-title {
@@ -180,6 +157,27 @@ export default {
  
   border: 0.1px solid #f8ffff;
   background-color: #f8ffff;
+}
+
+.c_box_button {
+  z-index: 3;
+  
+  position:relative; top:-25%; left:62%;
+  
+  
+  border-radius: 4px;
+  border: 1px solid #3b8070;
+  color: #3b8070;
+  background-color: #ffffff;
+  
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+
+.c_box_button:hover {
+  color: #fff;
+  background-color: #3b8070;
 }
 
 .title {
