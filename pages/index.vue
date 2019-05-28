@@ -1,34 +1,74 @@
 <template>
   <section class="container">
-  
-    <div class="c_box">
-      test1
-    </div>
-    <div class="c_box">
-      test2
-    </div>
-    <div class="c_box">
-      test3
-    </div>
-    <div class="c_box">
-      test4
-    </div>
-    <div class="c_box">
-      test5
-    </div>
-    <div class="c_box">
-      test6
-    </div>
-    <div class="c_box">
-      test7
-    </div>
-    <div class="c_box">
-      test8
-    </div>
-    <div class="c_box">
-      test9
+    
+    本の情報をISBNを元にGoogleあたりから引っ張れたらうれしい
+    <div>
+    
+      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          発売日：<br>
+          著者：
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
+        <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
+      </div>
+
+      <!--↓仮配置のコピペゾーン↓-->
+
+      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          発売日：<br>
+          著者：
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
+        <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
+      </div>
+      <div class="c_box">
+        <div class="c_box-title">
+          本のタイトルとか
+        </div>
+        <div class="c_box-main">
+          main
+          推薦人とコメント的なもの？
+        </div>
+        <div class="c_box-link-box">
+          発売日：<br>
+          著者：
+        </div>
+        <div class="c_box_futter">
+          futter、なにかしらのバッチアイコンと情報?
+        </div>
+        <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
+      </div>
+      
+      <!--↑仮配置のコピペゾーン↑-->
+      
     </div>
     
+    <div class="links">
+      <a
+        href="https://github.com/kandaYusuke/hello-nuxt/tree/master"
+        target="_blank"
+        class="button--green">GitHub</a>
+    </div>
     <!--
     <div>
       <app-logo/>
@@ -47,6 +87,7 @@
       </div>
     </div>
     -->
+    
   </section>
 </template>
 
@@ -64,10 +105,10 @@ export default {
 
 .container {
   min-height: 100vh;
-  /*
+
   display: flex;
   flex-wrap:wrap;
-  
+  /*
   justify-content: center;
   align-items: center;
   
@@ -76,12 +117,67 @@ export default {
 }
 
 .c_box{
-  height: 15vh;
-  width: 65vh;
+  display: flex;
+  flex-wrap: wrap;
   
-  padding: 1vh;
+  height: 25vh;
+  width: 90vh;
+  
+  padding: 0.2vh;
   margin: 1vh;
-  background-color: #f8f8f8;
+  background-color: #fff;
+  
+  border-radius: 4px;
+  border: 0.1px solid #f5f5ff;
+  
+  z-index: 2;
+}
+
+.c_box-title {
+  width:100%;
+  height: 20%;
+  background-color: #f8ffff;
+}
+
+.c_box-link-box {
+  width: 40%;
+  height: 65%;
+  border: 0.1px solid #f5f5ff;
+}
+
+.c_box-main {
+  width: 60%;
+  height: 65%;
+  border: 0.1px solid #f5f5ff;
+}
+
+.c_box_futter {
+  width:100%;
+  height: 15%;
+ 
+  border: 0.1px solid #f8ffff;
+  background-color: #f8ffff;
+}
+
+.c_box_button {
+  z-index: 3;
+  
+  position:relative; top:-25%; left:62%;
+  
+  
+  border-radius: 4px;
+  border: 1px solid #3b8070;
+  color: #3b8070;
+  background-color: #ffffff;
+  
+  text-decoration: none;
+  padding: 10px 30px;
+}
+
+
+.c_box_button:hover {
+  color: #fff;
+  background-color: #3b8070;
 }
 
 .title {

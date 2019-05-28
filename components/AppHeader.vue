@@ -1,6 +1,6 @@
 <template>
     <div class="navbar">
-        header
+        社内で本の貸し借りとかできたら嬉しい
     </div>
     
 </template>
@@ -13,8 +13,11 @@
     margin-bottom: 8vh;
     
     width: 100%;
-    background-color: #f8f8ff;
+    background-color: #000080;
     border-bottom: solid 0.1vh;
+    
+    
+    color: #FFF;
   }
   
 </style>
