@@ -100,11 +100,16 @@
     </div>
     
     <div class="links">
+      <nuxt-link to="/book-manage">本情報の管理</nuxt-link>
+    </div>
+    
+    <div class="links">
       <a
         href="https://github.com/kandaYusuke/hello-nuxt/tree/master"
         target="_blank"
         class="button--green">GitHub</a>
     </div>
+    
     <!--
     <div>
       <app-logo/>

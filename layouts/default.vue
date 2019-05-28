@@ -33,6 +33,10 @@ html {
   background-color: #f8f8ff;
 }
 
+a {
+  text-decoration: none;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
