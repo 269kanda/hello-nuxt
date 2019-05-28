@@ -1,11 +1,13 @@
 <template>
   <section class="container">
     <nuxt-link to="/">Home page</nuxt-link>
+    
     <div>
-      <app-logo/>
+      <div>
+        本を借りる為のページ<br/>
+        とりあえずは、初期はメールアドレスのリンクをつけるだけから入りたい
+      </div>
     </div>
-    本を借りる為のページ<br/>
-    とりあえずは、初期はメールアドレスのリンクをつけるだけから入りたい
 
   </section>
 </template>
