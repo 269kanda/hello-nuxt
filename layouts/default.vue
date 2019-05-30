@@ -37,6 +37,10 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style-type: none;
+}
+
 *, *:before, *:after {
   box-sizing: border-box;
   margin: 0;
