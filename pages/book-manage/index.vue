@@ -1,40 +1,42 @@
 <template>
   <section class="container">
     <div>
+      <nuxt-link to="/">home</nuxt-link><br>
       
       <h1>本情報を登録するページ</h1>
       
       <div>
           <div>
-            ISBN: <input v-model='isbnCode' placeholder='ISBNコード'>
+            ISBN(-抜き): <input v-model='isbnCode' placeholder='ISBNコード'>
             <button @click='get_book_info'>ISBNを元に本情報を取得</button>
+            <br>この後、「-」抜きを自動でするように変更、存在しないISBNコード時のcatch処理(今はエラー落ち)を追加する必要あり
           </div>
           
-          inputできるようにしているけどチェック処理の実装を省きたいので、入力不可に変更予定
-          
           <div>
-            タイトル: <input v-model='title' placeholder='タイトル'>
+            タイトル: <input hidden v-model='title' placeholder='タイトル'>
+            {{ title }}
           </div>
           <div>
-            書影(これは非表示項目、画像だけ表示させる)：
-            <input v-model='thumbnail_url' placeholder='書影img_url'>
-          </div>
-          <div>
+            書影：
+            <input hidden v-model='thumbnail_url' placeholder='書影img_url'>
             <img :src="thumbnail_url">
           </div>
           <div>
             発売日: 
-            <input v-model='release_date' placeholder='発売日'>
+            <input hidden v-model='release_date' placeholder='発売日'>
+            {{ release_date }}
           </div>
           <div>
-            著者: <input v-model='authors' placeholder='著者'>
+            著者: <input hidden v-model='authors' placeholder='著者'>
+            {{ authors }}
           </div>
           <div>
             あらすじ: 
-            <textarea v-model='description' placeholder='あらすじ'></textarea>
+            <textarea hidden v-model='description' placeholder='あらすじ'></textarea>
+            {{ description }}
           </div>
 
-          <button @click='add'>登録(まだハリボテ)</button>
+          <button @click='add'>登録</button>
         
         
         <br>
@@ -48,12 +50,12 @@
 <script>
 
 import axios from 'axios'
+import firebase from '@/plugins/firebase'
 
 export default {
   data() {
     return {
-//TODO：ISBNコードは本来は''で渡す。開発時に不便なので仮で初期値を渡している
-      isbnCode:'9784798153346',
+      isbnCode:'',
       title:'',
       authors:'',
       release_date:'',
@@ -62,6 +64,15 @@ export default {
     }
   },
   methods: {
+    init: function(){
+      //入力フォームの初期化
+      this.isbnCode = '';
+      this.title = '';
+      this.authors = '';
+      this.release_date = '';
+      this.description = '';
+      this.thumbnail_url = '';
+    },
     get_book_info: async function(event) {
       //Google BookのAPIを使用してISBNコードを元に本情報を取得
       let baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=isbn:';
@@ -84,14 +95,18 @@ export default {
     add: function(event) {
       //本情報登録
       
+      let data = {
+        isbn_code     : this.isbnCode     ,
+        title         : this.title        ,
+        authors       : this.authors      ,
+        release_date  : this.release_date ,
+        description   : this.description  ,
+        thumbnail_url : this.thumbnail_url
+      }
+      firebase.db.collection('books').doc(this.isbnCode).set(data);
       
       //初期化
-      this.isbnCode = '';
-      this.title = '';
-      this.authors = '';
-      this.release_date = '';
-      this.description = '';
-      this.thumbnail_url = '';
+      this.init();
       
       alert('登録完了');
     }

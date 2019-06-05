@@ -1,4 +1,6 @@
 module.exports = {
+  //SPAで実行
+  mode: 'spa',
   /*
   ** Headers of the page
   */

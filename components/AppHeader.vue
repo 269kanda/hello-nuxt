@@ -90,5 +90,9 @@ export default {
   padding-left: 0px;
 }
 
+.sidebar li {
+  margin: 30px 0;
+}
+
 
 </style>
