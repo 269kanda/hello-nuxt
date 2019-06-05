@@ -1,9 +1,11 @@
 <template>
   <div>
+    
     <AppHeader></AppHeader>
     <div class="header-botom"></div>
     <nuxt/>
     <AppButtonToppage></AppButtonToppage>
+    
   </div>
 </template>
 
@@ -14,8 +16,8 @@
   export default {
       components: {
           AppHeader,
-          AppButtonToppage
-      },
+          AppButtonToppage,
+      }
   };
 </script>
 

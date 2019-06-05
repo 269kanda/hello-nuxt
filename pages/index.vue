@@ -2,6 +2,16 @@
   <section class="container">
     
     <div>
+      <span>仮配置: ユーザー認証に使用(今は特に意味なし)</span>
+      <AppLogin></AppLogin>
+      <div>login状況{{ isLogin }}</div>
+      <br>
+      <nuxt-link to="/book-manage" no-prefetch>本情報の管理</nuxt-link>
+      
+      <br>
+      CSS色々ミスっているので直す必要あり(借りるボタンの位置ずれ等)<br>
+      <br>
+      
       本の情報(書影等)は、GoogleBookより引用しています。
       <li v-for="book in books" :key="book.id">
         <div class="c_box">
@@ -17,16 +27,27 @@
               {{ book.description }} 
           </div>
           <div class="c_box-sub">
-            推薦してる人とコメント(実装優先度低)
+            <!--
+              推薦してる人とコメント(実装優先度低)
+            -->
           </div>
           <div class="c_box_futter">
-            総数:3,貸出数:2 
+            総数:hoge,貸出数:hoge,読了者数:hoge
           </div>
           
           <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
           
         </div>
       </li>
+      
+     <li v-for="book in hogeT" :key="book.id">
+        <div class="c_box">
+          <div class="c_box-title">
+            {{ book.title }}
+          </div>
+         </div>
+      </li>
+      
       
     </div>
     
@@ -35,34 +56,48 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
+import firebase from '@/plugins/firebase'
+
+import AppLogin from '@/components/AppLogin.vue';
+import AppLogout from '@/components/AppLogout.vue';
 
 export default {
   components: {
-    AppLogo
+    AppLogo,
+    AppLogin,
+    AppLogout
   },
   data() {
     return {
-      books: [
-        {
-          title: 'カイゼン・ジャーニー たった1人からはじめて、「越境」するチームをつくるまで',
-          thumbnail_url: 'http://books.google.com/books/content?id=ROFLDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
-          release_date: '2018-02-07',
-          authors:'市谷聡啓,新井剛',
-          description:'「日本の現場」に寄り添った、アジャイル開発の実践！ 現場のストーリーで、開発の神髄を学ぼう 【本書の特徴】 ...'
-        },
-        {
-          title: 'リーダブルコード',
-          thumbnail_url:'http://books.google.com/books/content?id=Wx1dLwEACAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api',
-          release_date: '2012-06',
-          authors:'Dustin Boswell,Trevor Foucher',
-          description:'読んでわかるコードの重要性と方法について解説',
-        }
-      ],
-      testFlg: false
+      books: []
     }
   },
   methods: {
-  }
+    getBooks : async function(){
+      //
+      let temp = await firebase.db.collection('books').get();
+      temp.forEach(doc => {
+        this.books.push(doc.data());
+      });
+    }
+  },
+  asyncData (context) {
+    // コンポーネントをロードする前に毎回呼び出されます
+    return { isLogin:false, userData:null}
+  },
+  created : function() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.isLogin = true;
+        this.userData = user;
+      } else {
+        this.isLogin = false;
+        this.userData = null;
+      };
+    });
+    
+    this.getBooks();
+   }
 }
 </script>
 
