@@ -2,11 +2,11 @@
   <section class="container">
     
     <div>
-      <span>仮配置: ユーザー認証に使用(今は特に意味なし)</span>
+      <span>仮配置: ユーザー認証に使用 (ログイン画面を別に作ってログイン必須にする)</span>
       <AppLogin></AppLogin>
       <div>login状況{{ isLogin }}</div>
       <br>
-      <nuxt-link to="/book-manage" no-prefetch>本情報の管理</nuxt-link>
+      <nuxt-link to="/book-manage" >本情報の登録</nuxt-link>
       
       <br>
       CSS色々ミスっているので直す必要あり(借りるボタンの位置ずれ等)<br>
@@ -22,30 +22,29 @@
             <img :src='book.thumbnail_url'>
           </div>
           <div class="c_box-main">
-              発売日：{{ book.release_date }}<br>
-              著者：{{ book.authors }}<br>
-              {{ book.description }} 
+            発売日：{{ book.release_date }}<br>
+            著者：
+            <ul>
+              <li v-for="author in book.authors" :key='author.id'>
+                {{ author }}
+              </li>
+            </ul>
+            
+            <br>
+            {{ book.description }} 
           </div>
           <div class="c_box-sub">
             <!--
-              推薦してる人とコメント(実装優先度低)
+              タグとか表示したい
             -->
           </div>
           <div class="c_box_futter">
-            総数:hoge,貸出数:hoge,読了者数:hoge
+            何か情報:hoge
           </div>
-          
-          <nuxt-link to="/borrow" class="c_box_button">借りる</nuxt-link>
+          <span class="c_box_button c_box_button1" @click='lendBook(book.isbn_code)'>貸</span>
+          <span class="c_box_button c_box_button2" @click='borrowBook(book.isbn_code)'>借</span>
           
         </div>
-      </li>
-      
-     <li v-for="book in hogeT" :key="book.id">
-        <div class="c_box">
-          <div class="c_box-title">
-            {{ book.title }}
-          </div>
-         </div>
       </li>
       
       
@@ -79,6 +78,15 @@ export default {
       temp.forEach(doc => {
         this.books.push(doc.data());
       });
+    },
+    lendBook : function(isbn_code){
+      //貸すボタンを選んだ「本」へ貸出ユーザーへの追記
+      firebase.db.collection('books').doc(isbn_code).update({
+        lend_users: firebase.firestore.FieldValue.arrayUnion(this.userData.uid)
+      });
+    },
+    borrowBook : function(isbn_code){
+      this.$router.push('borrow/?isbn_code='+isbn_code);
     }
   },
   asyncData (context) {
@@ -86,6 +94,7 @@ export default {
     return { isLogin:false, userData:null}
   },
   created : function() {
+    //user情報の取得
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.isLogin = true;
@@ -167,11 +176,8 @@ export default {
 .c_box_button {
   z-index: 3;
   
-  grid-column: 4 / 5;
-  grid-row: 4 / 6;
-  
-  max-width: 16vw;
-  min-width: 16vw;
+  max-width: 2vw;
+  min-width: 2vw;
   
   border-radius: 4px;
   border: 1px solid #3b8070;
@@ -181,6 +187,15 @@ export default {
   padding: 10px 4vw;
 }
 
+.c_box_button1 {
+  grid-column: 4 / 5;
+  grid-row: 5 / 6;
+}
+
+.c_box_button2 {
+  grid-column: 5 / 5;
+  grid-row: 5 / 6;
+}
 
 .c_box_button:hover {
   color: #fff;
