@@ -10,10 +10,7 @@
             <button @click='sidebar_show'>close</button>
             <ul>
               <li>
-                <nuxt-link to="/">Home</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link to="/mypage">マイページ</nuxt-link>
+                <nuxt-link to="/">マイページ(未実装)</nuxt-link>
               </li>
               <li>
                 <nuxt-link to="/book-manage" no-prefetch>本情報の管理</nuxt-link>
