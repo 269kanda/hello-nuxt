@@ -7,19 +7,18 @@
       
       <div>
           <div>
-            ISBN(-抜き): <input v-model='isbnCode' placeholder='ISBNコード'>
+            ISBN: <input v-model='isbnCode' placeholder='ISBNコード'>
             <button @click='get_book_info'>ISBNを元に本情報を取得</button>
-            <br>この後、「-」抜きを自動でするように変更、存在しないISBNコード時のcatch処理(今はエラー落ち)を追加する必要あり
+            <br>※ISBN10でも本情報は取得出来ます。登録はISBN13で行われます。
           </div>
           
           <div>
-            タイトル: <input hidden v-model='title' placeholder='タイトル'>
-            {{ title }}
+            タイトル: {{ title }}
+             <input hidden v-model='title' placeholder='タイトル'>
           </div>
           <div>
-            書影：
+            書影：<img :src="thumbnail_url">
             <input hidden v-model='thumbnail_url' placeholder='書影img_url'>
-            <img :src="thumbnail_url">
           </div>
           <div>
             発売日: 
@@ -34,6 +33,9 @@
             あらすじ: 
             <textarea hidden v-model='description' placeholder='あらすじ'></textarea>
             {{ description }}
+          </div>
+          <div>
+            ISBN13コード: {{ icbn_code_13 }}
           </div>
 
           <button @click='add'>登録</button>
@@ -60,7 +62,8 @@ export default {
       authors:'',
       release_date:'',
       description:'',
-      thumbnail_url:''
+      thumbnail_url:'',
+      icbn_code_13: ''
     }
   },
   methods: {
@@ -72,31 +75,47 @@ export default {
       this.release_date = '';
       this.description = '';
       this.thumbnail_url = '';
+      this.icbn_code_13 = '';
     },
     get_book_info: async function(event) {
+      //最低限の空文字チェック
+      if(!this.isbnCode){
+        alert('ISBNコードを入力してください。');
+        return;
+      }
+      
+      //'-'を除去
+      
+      
       //Google BookのAPIを使用してISBNコードを元に本情報を取得
       let baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=isbn:';
       let googleSerchUrl;
       googleSerchUrl = baseUrl + this.isbnCode;
       
-      const response = await axios.get(googleSerchUrl);
-      const data = response.data.items[0].volumeInfo;
-      
-      //取得した情報を入力フォームへ
-      this.title = data.title;
-      this.authors = data.authors;
-      this.release_date = data.publishedDate;
-      this.description = response.data.items[0].searchInfo.textSnippet;
-      this.thumbnail_url = data.imageLinks.smallThumbnail;
-      
-      alert('データ取得完了');
+      let response = await axios.get(googleSerchUrl);
+      try{
+        const data = response.data.items[0].volumeInfo;
+        
+        //取得した情報を入力フォームへ
+        this.title = data.title;
+        this.authors = data.authors;
+        this.release_date = data.publishedDate;
+        this.description = response.data.items[0].searchInfo.textSnippet;
+        this.thumbnail_url = data.imageLinks.smallThumbnail;
+        this.icbn_code_13  = data.industryIdentifiers[1].identifier;
+      }
+      catch(e){
+        alert('データ取得できませんでした');
+      }
     },
     
     add: function(event) {
       //本情報登録
       
+      //ISBNコードは、入力欄ではなく取得済みの情報から取得する。
+      
       let data = {
-        isbn_code     : this.isbnCode     ,
+        isbn_code     : this.icbn_code_13 ,
         title         : this.title        ,
         authors       : this.authors      ,
         release_date  : this.release_date ,
