@@ -2,18 +2,16 @@
   <section class="container">
     
     <div>
-      <span>仮配置: ユーザー認証に使用 (ログイン画面を別に作ってログイン必須にする)</span>
       <AppLogin></AppLogin>
-      <div>login状況{{ isLogin }}</div>
       <br>
+      <span>先に氏名を登録してください↓</span><br>
+      <nuxt-link to="/mypage" >氏名登録</nuxt-link>
+      <br><br>
       <nuxt-link to="/book-manage" >本情報の登録</nuxt-link>
-      
-      <br>
-      CSS色々ミスっているので直す必要あり(借りるボタンの位置ずれ等)<br>
       <br>
       
       本の情報(書影等)は、GoogleBookより引用しています。
-      <li v-for="book in books" :key="book.id">
+      <li v-for="(book, index) in books" :key="book.isbn_code">
         <div class="c_box">
           <div class="c_box-title">
             {{ book.title }}
@@ -43,10 +41,12 @@
             -->
           </div>
           <div class="c_box_futter">
-            何か情報:hoge
+            <!-- 貸出登録済み かでボタン切り替え -->
+            <span v-if="book.lend_flg" class="c_box_button c_box_button_a_click c_box_button1" @click='ledBookCancel(book.isbn_code, index)'>貸</span>
+            <span v-else               class="c_box_button c_box_button_b_click c_box_button1" @click='lendBook(book.isbn_code, index)'>貸</span>
+            
+            <span class="c_box_button c_box_button_b_click c_box_button2" @click='borrowBook(book.isbn_code)'>借</span>
           </div>
-          <span class="c_box_button c_box_button1" @click='lendBook(book.isbn_code)'>貸</span>
-          <span class="c_box_button c_box_button2" @click='borrowBook(book.isbn_code)'>借</span>
           
         </div>
       </li>
@@ -62,13 +62,11 @@ import AppLogo from '~/components/AppLogo.vue'
 import firebase from '@/plugins/firebase'
 
 import AppLogin from '@/components/AppLogin.vue';
-import AppLogout from '@/components/AppLogout.vue';
 
 export default {
   components: {
     AppLogo,
-    AppLogin,
-    AppLogout
+    AppLogin
   },
   data() {
     return {
@@ -80,14 +78,36 @@ export default {
       //
       let temp = await firebase.db.collection('books').get();
       temp.forEach(doc => {
-        this.books.push(doc.data());
+        //データ部分を取得
+        let temp = doc.data();
+        
+        //貸出登録をしているか判断する。(貸出ボタンの切り替えに使用)
+        let lend_flg = false;
+        if(typeof temp.lend_users != 'undefined'){
+          lend_flg = temp.lend_users.some(lend_user => lend_user == this.userData.uid);
+        }
+        temp.lend_flg = lend_flg;
+        
+        this.books.push(temp);
       });
     },
-    lendBook : function(isbn_code){
-      //貸すボタンを選んだ「本」へ貸出ユーザーへの追記
+    lendBook : function(isbn_code,index){
+      //貸出ボタンを選んだ「本」へ貸出ユーザーへの追記
       firebase.db.collection('books').doc(isbn_code).update({
         lend_users: firebase.firestore.FieldValue.arrayUnion(this.userData.uid)
       });
+      //貸出登録へ切り替え
+      this.books[index].lend_flg = true;
+    },
+    ledBookCancel : function(isbn_code,index){
+      //@index: 該当要素のbooksの位置(lend_flgの切り替えに使用)
+      
+      //貸出キャンセル
+      firebase.db.collection('books').doc(isbn_code).update({
+        lend_users: firebase.firestore.FieldValue.arrayRemove(this.userData.uid)
+      });
+      //貸出前にへ切り替え
+      this.books[index].lend_flg = false;
     },
     borrowBook : function(isbn_code){
       this.$router.push('borrow/?isbn_code='+isbn_code);
@@ -101,10 +121,8 @@ export default {
     //user情報の取得
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.isLogin = true;
         this.userData = user;
       } else {
-        this.isLogin = false;
         this.userData = null;
       };
     });
@@ -175,6 +193,9 @@ export default {
   grid-row: 5 / 6;
  
   background-color: #f8ffff;
+  
+  display: flex;
+  justify-content: flex-end;
 }
 
 .c_box_button {
@@ -185,26 +206,27 @@ export default {
   
   border-radius: 4px;
   border: 1px solid #3b8070;
-  color: #3b8070;
-  background-color: #ffffff;
   
   padding: 10px 4vw;
+  margin: 0 2vw;
+  display: flex;
+  justify-content: center;
 }
 
-.c_box_button1 {
-  grid-column: 4 / 5;
-  grid-row: 5 / 6;
+.c_box_button_b_click, .c_box_button_a_click:hover {
+  color: #3b8070;
+  background-color: #ffffff;
 }
 
-.c_box_button2 {
-  grid-column: 5 / 5;
-  grid-row: 5 / 6;
-}
-
-.c_box_button:hover {
+.c_box_button_b_click:hover, .c_box_button_a_click{
   color: #fff;
   background-color: #3b8070;
 }
+
+
+
+
+
 
 .links {
   padding-top: 15px;

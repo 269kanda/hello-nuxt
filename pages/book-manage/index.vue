@@ -85,7 +85,7 @@ export default {
       }
       
       //'-'を除去
-      
+      this.isbnCode = this.isbnCode.replace(/-/g,'');
       
       //Google BookのAPIを使用してISBNコードを元に本情報を取得
       let baseUrl = 'https://www.googleapis.com/books/v1/volumes?q=isbn:';
@@ -104,10 +104,9 @@ export default {
         
         this.icbn_code_13  = data.industryIdentifiers[1].identifier;
         
-        //サムネイル画像(書影)は、存在していないときがある
-        
+        //サムネイル画像(書影)は、存在していない時がある
         if(typeof data.imageLinks != 'undefined'){
-          if(data.data.imageLinks.smallThumbnail){
+          if(data.imageLinks.smallThumbnail){
             this.thumbnail_url = data.imageLinks.smallThumbnail;
           }
         }

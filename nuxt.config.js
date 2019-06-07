@@ -5,7 +5,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'hello-nuxt',
+    title: '社内で本貸し借り',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -36,6 +36,9 @@ module.exports = {
         })
       }
     }
+  },
+  router: {
+    middleware: 'authenticated'
   },
   plugins: [
     '~plugins/scroll.js'
