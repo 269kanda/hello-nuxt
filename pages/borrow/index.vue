@@ -30,13 +30,20 @@ export default {
       await this.get_lend_user_id(isbn_code)
         .then(users => {
           if(typeof users === 'undefined') {
-            this.lend_users.push('貸出登録者がいません')
+            this.lend_users.push('貸出登録者がいません');
+          } else if(Object.keys(users).length === 0) {
+            this.lend_users.push('貸出登録者がいません');
           } else {
             users.forEach(user_id => {
               //ユーザー名取得
               this.get_user_info(user_id)
                 .then(user => {
-                  this.lend_users.push(user.name)
+                  try{
+                    this.lend_users.push(user.name)
+                  }
+                  catch(e){
+                    this.lend_users.push('ユーザー名称が登録されていないユーザー')
+                  }
                 })
             })
           }
@@ -69,7 +76,6 @@ export default {
   }
   
 }
-
 
 
 </script>
