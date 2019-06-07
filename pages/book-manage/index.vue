@@ -101,8 +101,16 @@ export default {
         this.authors = data.authors;
         this.release_date = data.publishedDate;
         this.description = response.data.items[0].searchInfo.textSnippet;
-        this.thumbnail_url = data.imageLinks.smallThumbnail;
+        
         this.icbn_code_13  = data.industryIdentifiers[1].identifier;
+        
+        //サムネイル画像(書影)は、存在していないときがある
+        
+        if(typeof data.imageLinks != 'undefined'){
+          if(data.data.imageLinks.smallThumbnail){
+            this.thumbnail_url = data.imageLinks.smallThumbnail;
+          }
+        }
       }
       catch(e){
         alert('データ取得できませんでした');

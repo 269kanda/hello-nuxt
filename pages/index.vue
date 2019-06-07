@@ -20,6 +20,10 @@
           </div>
           <div class="c_box_thumbnail">
             <img :src='book.thumbnail_url'>
+            <span v-if="book.thumbnail_url === ''">
+              <!-- 書影がない場合の表示 -->
+              <img src="~/assets/thumbnail_none.jpg">
+            </span>
           </div>
           <div class="c_box-main">
             発売日：{{ book.release_date }}<br>

@@ -50,6 +50,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  z-index: 999;
 }
 
 .pagetop-fade-enter-active, .pagetop-fade-leave-active {
@@ -64,6 +66,12 @@ export default {
   font-size: 30px;
   color: #fff;
   text-decoration: none;
+  
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
