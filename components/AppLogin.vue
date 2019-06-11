@@ -1,7 +1,7 @@
 <template>
 <div>
-    <button v-if="isLogin" @click="googleLogout">google logout</button>
-    <button v-else         @click="googleLogin">google login</button>
+    <button v-if="isLogin" @click="googleLogout">logout</button>
+    <div v-else @click="googleLogin"><img src="~/assets/btn_google_signin_dark_normal_web.png"></div>
 </div>
 </template>
 

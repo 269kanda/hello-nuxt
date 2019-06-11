@@ -12,6 +12,7 @@ import firebase from '@/plugins/firebase'
 import AppLogin from '@/components/AppLogin.vue';
 
 export default {
+  layout: 'login',
   components: {
     firebase,
     AppLogin
