@@ -2,12 +2,11 @@
   <section class="container">
     
     <div>
-      <AppLogin></AppLogin>
       <br>
       <span>先に氏名を登録してください↓</span><br>
-      <nuxt-link to="/mypage" >氏名登録</nuxt-link>
+      <nuxt-link to="/user-edit" >ユーザー情報登録</nuxt-link>
       <br><br>
-      <nuxt-link to="/book-manage" >本情報の登録</nuxt-link>
+      <nuxt-link to="/book-manage" >本の情報登録</nuxt-link>
       <br>
       
       本の情報(書影等)は、GoogleBookより引用しています。
@@ -58,15 +57,10 @@
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
 import firebase from '@/plugins/firebase'
-
-import AppLogin from '@/components/AppLogin.vue';
 
 export default {
   components: {
-    AppLogo,
-    AppLogin
   },
   data() {
     return {
@@ -213,12 +207,12 @@ export default {
   justify-content: center;
 }
 
-.c_box_button_b_click, .c_box_button_a_click:hover {
+.c_box_button_b_click, .c_box_button_a_click:active {
   color: #3b8070;
   background-color: #ffffff;
 }
 
-.c_box_button_b_click:hover, .c_box_button_a_click{
+.c_box_button_b_click:active, .c_box_button_a_click{
   color: #fff;
   background-color: #3b8070;
 }

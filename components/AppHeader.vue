@@ -1,13 +1,11 @@
 <template>
     <div class='navbar'>
-        <button @click='sidebar_show'>open</button>
-        
+        <span @click='sidebar_show' class='menu_icon'><img :src="menu_icon_img_src"></span>
         <nuxt-link to="/">社内で本の貸し借りとかできたら嬉しい</nuxt-link>
-        
+        <AppLogout></AppLogout>
         
         <transition name='sidebar-fade'>
           <div class='sidebar' v-show='sidebarFlg'>
-            <button @click='sidebar_show'>close</button>
             <ul>
               <li>
                 <nuxt-link to="/">Home</nuxt-link>
@@ -32,15 +30,27 @@
 </template>
 
 <script>
+
+import AppLogout from '@/components/AppLogout.vue';
+
+import menuIconImg_white from '~/assets/outline_drag_indicator_white_18dp.png';
+import menuIconImg_black from '~/assets/outline_drag_indicator_black_18dp.png';
+
 export default {
+  components: {
+    AppLogout
+  },
   data() {
     return {
-      sidebarFlg: false
+      sidebarFlg: false,
+      menu_icon_img_src: menuIconImg_white
     }
   },
   methods: {
     sidebar_show: function(e){
       this.sidebarFlg = !(this.sidebarFlg);
+      //メニューを開いている時は、黒のアイコン、閉じている時は白のアイコンへ画像切り替え
+      this.menu_icon_img_src = this.sidebarFlg? menuIconImg_black:menuIconImg_white;
     }
   }
 }
@@ -50,8 +60,11 @@ export default {
 .navbar {
   z-index: 100;
   position: fixed;
-  display: block;
-  height: 5.5vh;
+  display: flex;
+  align-items: center;
+  justify-content:space-between;
+  
+  height: 7vh;
   margin-bottom: 8vh;
   
   width: 100%;
@@ -65,6 +78,11 @@ export default {
   color: #fff;
 }
 
+.menu_icon {
+  z-index: 102;
+  margin: 0 10vw 0vw 2vw;
+}
+
 .sidebar {
   z-index: 101;
   position: fixed;
@@ -73,7 +91,7 @@ export default {
   top: 0;
   height: 100vh;
   min-weight: 50vw;
-  padding: 0 1vw;
+  padding: 4.5vh 1vw;
   background-color: #fff;
 }
 
