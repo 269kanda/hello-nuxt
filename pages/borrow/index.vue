@@ -39,7 +39,7 @@ export default {
               this.get_user_info(user_id)
                 .then(user => {
                   try{
-                    this.lend_users.push(user.name)
+                    this.lend_users.push(user.display_name)
                   }
                   catch(e){
                     this.lend_users.push('ユーザー名称が登録されていないユーザー')

@@ -4,9 +4,9 @@
     <div>
       <br>
       <span>先に氏名を登録してください↓</span><br>
-      <nuxt-link to="/mypage" >氏名登録</nuxt-link>
+      <nuxt-link to="/user-edit" >ユーザー情報登録</nuxt-link>
       <br><br>
-      <nuxt-link to="/book-manage" >本情報の登録</nuxt-link>
+      <nuxt-link to="/book-manage" >本の情報登録</nuxt-link>
       <br>
       
       本の情報(書影等)は、GoogleBookより引用しています。
