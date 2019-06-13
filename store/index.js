@@ -15,6 +15,18 @@ export const getters = {
   isAuthenticated (state) {
     let result = Object.keys(state.authInfo).length?true:false;
     return result;
+  },
+  /* ユーザー情報の取得
+   * @uid :認証のユーザーID
+   */
+  getUserData: async function(state){
+    //error時にnullを返却しているがerror返すべきかも？
+    let temp = await new Promise((resolve, reject) => {
+      firebase.db.collection('users').doc(state.authInfo.uid).get()
+        .then ( (data) => resolve(data.data()) )
+        .catch( ()     => reject(null))
+    });
+    return temp;
   }
 }
 

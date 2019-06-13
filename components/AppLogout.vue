@@ -8,7 +8,6 @@
 import firebase from '@/plugins/firebase'
 
 import { mapActions } from 'vuex'
-import { mapMutations } from 'vuex'
 
 export default {
   methods: {

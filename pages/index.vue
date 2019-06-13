@@ -3,12 +3,8 @@
     
     <div>
       <br>
-      <span>先に氏名を登録してください↓</span><br>
-      <nuxt-link to="/user-edit" >ユーザー情報登録</nuxt-link>
-      <br><br>
       <nuxt-link to="/book-manage" >本の情報登録</nuxt-link>
       <br>
-      
       本の情報(書影等)は、GoogleBookより引用しています。
       <li v-for="(book, index) in books" :key="book.isbn_code">
         <div class="c_box">
@@ -58,6 +54,7 @@
 
 <script>
 import firebase from '@/plugins/firebase'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {

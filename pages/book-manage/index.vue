@@ -4,7 +4,7 @@
       <nuxt-link to="/">home</nuxt-link><br>
       
       <h1>本情報を登録するページ</h1>
-      
+      ISBNで検索後にISBN変えて登録できてしまうので、修正予定
       <div>
           <div>
             ISBN: <input v-model='isbnCode' placeholder='ISBNコード'>

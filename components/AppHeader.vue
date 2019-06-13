@@ -3,6 +3,9 @@
         <span @click='sidebar_show' class='menu_icon'><img :src="menu_icon_img_src"></span>
         <nuxt-link to="/">社内で本の貸し借りとかできたら嬉しい</nuxt-link>
         <AppLogout></AppLogout>
+        <nuxt-link to="/user-edit" >
+          <UserIcon :props_photo_url=this.$store.state.user.photo_url></UserIcon>
+        </nuxt-link>
         
         <transition name='sidebar-fade'>
           <div class='sidebar' v-show='sidebarFlg'>
@@ -32,13 +35,15 @@
 <script>
 
 import AppLogout from '@/components/AppLogout.vue';
+import UserIcon from '@/components/UserIcon.vue';
 
 import menuIconImg_white from '~/assets/outline_drag_indicator_white_18dp.png';
 import menuIconImg_black from '~/assets/outline_drag_indicator_black_18dp.png';
 
 export default {
   components: {
-    AppLogout
+    AppLogout,
+    UserIcon
   },
   data() {
     return {
