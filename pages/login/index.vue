@@ -15,6 +15,7 @@ import firebase from '@/plugins/firebase'
 
 import { mapActions } from 'vuex'
 import { mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   layout: 'login',
@@ -44,7 +45,15 @@ export default {
     //※ブラウザでreloadした場合、Storeの値が初期化される為、
     //reload先に遷移しようとする→middleware→login画面へ遷移→再度認証情報取得→「/」にリダイレクト
     if (this.$store.getters.isAuthenticated) {
-      this.$router.push('/'); 
+      
+      //ユーザー情報登録済みであれば、「/」へ登録前であれば、「signup」画面へ
+      let userData = await this.getUserData(user.uid);
+      this.$store.commit('setUser', userData);
+      if(userData){
+        this.$router.push('/');
+      } else {
+        this.$router.push('/signup');
+      }
     } else {
       //リダイレクトしていないということは、ログイン前の為、ログイン画面を表示する。
       //elseに入れているのは、router.pushから遷移までの間に一瞬表示されてしまうのを防ぐため
@@ -57,6 +66,9 @@ export default {
     ...mapActions([
       'login',
       'setAuthInfo'
+    ]),
+    ...mapGetters([
+      'getUserData'
     ]),
     googleLogin: function() {
       this.login()
